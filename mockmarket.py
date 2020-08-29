@@ -164,7 +164,7 @@ def sell(data):
 
     #allows user to sell stock
 
-portfolioValue = 0
+
 
 init()
 data = load_data()
@@ -173,41 +173,47 @@ getProfit(data)
 #gets the profit, initializes client, loads data into memory
 
 print(("commands: 'buy', 'sell', 'log', 'balance', 'portfolio'"))
-while True:
-    user_action = input("What do you want to do? ")
-    user_action.strip()
-    if user_action == "":
-        break
-    if user_action == "buy":
-        print("You have ${}".format(round(data["cash"], 2)))
-        buy(data)
 
-    elif user_action == "sell":
-        print("Your holdings: ")
-        for ele in data["portfolio"]:
-            print(ele)
-        sell(data)
+def main_menu():
+    portfolioValue = 0
+    while True:
+        user_action = input("What do you want to do? ")
+        if user_action == "":
+            continue
+        user_action.strip()
+        if user_action == "":
+            break
+        if user_action == "buy":
+            print("You have ${}".format(round(data["cash"], 2)))
+            buy(data)
 
-    elif user_action == "log":
-        print("Transaction Log: ")
-        for ele in data["transaction_log"]:
-            print(ele)
+        elif user_action == "sell":
+            print("Your holdings: ")
+            for ele in data["portfolio"]:
+                print(ele)
+            sell(data)
 
-    elif user_action == "balance":
-        print("You have ${}".format(data["cash"]))
+        elif user_action == "log":
+            print("Transaction Log: ")
+            for ele in data["transaction_log"]:
+                print(ele)
 
-    elif user_action == "portfolio":
-        print("Your holdings: ")
-        for ele in data["portfolio"]:
-            portfolioValue += ele["totalPrice(holding)"]
-            print(ele)
-        portfolioValue = round(portfolioValue, 2)
-        print("Portfolio Value: {}".format(portfolioValue))
+        elif user_action == "balance":
+            print("You have ${}".format(data["cash"]))
+
+        elif user_action == "portfolio":
+            print("Your holdings: ")
+            for ele in data["portfolio"]:
+                portfolioValue += ele["totalPrice(holding)"]
+                print(ele)
+            portfolioValue = round(portfolioValue, 2)
+            print("Portfolio Value: {}".format(portfolioValue))
 
 
-    else:
-        print("That command is not recognized")
+        else:
+            print("That command is not recognized")
 
+main_menu()
 
 #creates the main menu
 

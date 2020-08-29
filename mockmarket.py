@@ -4,7 +4,7 @@ from datetime import datetime
 from time import gmtime, strftime
 
 API_KEY = "bshlqpfrh5r9t1gn0q70"  #from website
-DATA_FILE = "mockdata.json"  #local file to store info
+DATA_FILE = r"D:\mockdata.json"  #local file to store info
 
 finnhub_client = None
 
